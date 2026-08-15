@@ -1,0 +1,8 @@
+sample	group	mouse	day	total_reads
+DE-14647-S2_bleu_CB_2603_S4	control	M4	26	5215882
+DE-14648-S2_bleu_CB_2803_S5	control	M5	28	6094310
+DE-14649-S2_bleu_CB_3103_S6	control	M6	31	5802447
+DE-14650-S2_bleu_M9_CA_1703_S7	treated	M9	17	4251063
+DE-14653-S2_bleu_M9_CA_2603_S10	treated	M9	26	4987120
+DE-14644-S2_cleaned	treated	M2	14	3918555
+DE-14999-S2_extra_ctrl	control	M12	31	5100000

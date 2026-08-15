@@ -1,0 +1,10 @@
+#mpa_vJan25_CHOCOPhlAnSGB_202503
+#/usr/bin/metaphlan DE-14647-S2_bleu_CB_2603_S4.fastq.gz --nproc 8
+#5215882 reads processed
+#clade_name	NCBI_tax_id	relative_abundance	additional_species
+k__Bacteria	2	100.00000	
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Muribaculaceae|g__Muribaculum|s__Muribaculum_intestinale	2|976|200643|171549|2005525|2093822|1796646	22.96013	
+k__Bacteria|p__Bacteroidota|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__Bacteroides|s__Bacteroides_vulgatus	2|976|200643|171549|815|816|821	19.39327	
+k__Bacteria|p__Verrucomicrobiota|c__Verrucomicrobiae|o__Verrucomicrobiales|f__Akkermansiaceae|g__Akkermansia|s__Akkermansia_muciniphila	2|74201|203494|48461|1647988|239934|239935	8.36396	
+k__Bacteria|p__Bacillota|c__Clostridia|o__Eubacteriales|f__Peptostreptococcaceae|g__Clostridioides|s__Clostridioides_difficile	2|1239|186801|186802|186804|1870884|1496	20.89978	
+k__Bacteria|p__Bacillota|c__Bacilli|o__Lactobacillales|f__Lactobacillaceae|g__Lactobacillus|s__Lactobacillus_johnsonii	2|1239|91061|186826|33958|1578|47770	28.38286	

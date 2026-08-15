@@ -1,0 +1,41 @@
+ 11.71	679512	679512	U	0	unclassified
+ 88.29	5122930	0	R	1	root
+ 84.96	4929596	0	D	2	  Bacteria
+ 27.12	1573559	0	P	976	    Bacteroidota
+ 27.12	1573559	0	C	200643	      Bacteroidia
+ 27.12	1573559	0	O	171549	        Bacteroidales
+ 16.83	976566	0	F	815	          Bacteroidaceae
+ 16.83	976566	0	G	816	            Bacteroides
+ 11.11	644892	644892	S	821	              Bacteroides vulgatus
+  5.72	331674	331674	S	817	              Bacteroides fragilis
+  3.18	184342	0	F	171552	          Prevotellaceae
+  3.18	184342	0	G	838	            Prevotella
+  3.18	184342	184342	S	839	              Prevotella copri
+  7.11	412651	0	F	2005525	          Muribaculaceae
+  7.11	412651	0	G	2093822	            Muribaculum
+  7.11	412651	412651	S	1796646	              Muribaculum intestinale
+ 37.86	2196650	0	P	1239	    Bacillota
+ 16.83	976467	0	C	186801	      Clostridia
+ 16.83	976467	0	O	186802	        Eubacteriales
+ 12.45	722469	0	F	186803	          Lachnospiraceae
+  9.40	545549	0	G	572511	            Blautia
+  9.40	545549	545549	S	853	              Blautia producta
+  3.05	176920	0	G	1730	            Eubacterium
+  3.05	176920	176920	S	39485	              Eubacterium rectale
+  4.38	253998	0	F	186804	          Peptostreptococcaceae
+  4.38	253998	0	G	1870884	            Clostridioides
+  4.38	253998	253998	S	1496	              Clostridioides difficile
+ 21.03	1220183	0	C	91061	      Bacilli
+ 21.03	1220183	0	O	186826	        Lactobacillales
+ 21.03	1220183	0	F	33958	          Lactobacillaceae
+ 21.03	1220183	0	G	1578	            Lactobacillus
+ 12.59	730441	730441	S	1596	              Lactobacillus gasseri
+  8.44	489742	489742	S	47770	              Lactobacillus johnsonii
+ 17.89	1038340	0	P	74201	    Verrucomicrobiota
+ 17.89	1038340	0	G	239934	            Akkermansia
+ 17.89	1038340	1038340	S	239935	              Akkermansia muciniphila
+  2.09	121047	0	P	1224	    Pseudomonadota
+  2.09	121047	0	G	561	            Escherichia
+  2.09	121047	121047	S	562	              Escherichia coli
+  3.33	193334	0	D	10239	  Viruses
+  3.33	193334	193334	S	1918006	              Lactobacillus phage LgaI
