@@ -10,7 +10,7 @@ from pathlib import Path
 
 #--- LEVEL 1 
 
-DATA = Path("/home/annie/Bureau/pandas_bioinfo_training/data")
+DATA = Path("/home/anh/Desktop/pandas_bioinfo_training/data")
 
 REPORT_COLS = ["pct", "clade_reads", "direct_reads", "rank", "taxid", "name"]
 
@@ -33,13 +33,21 @@ def ex2():
 
 #Glob all reports with pathlib
 def ex3():
-    report_all = Path("data").glob("*.report")
-    print(list(report_all))
+    report = sorted(r.stem for r in DATA.glob("*.report"))
+    print("\n".join(report))
+    assert len(report) == 6 
+    
+    
 
-def ex4()
-    print("GITHUB")
+def ex4():
+    metaphlan_profile =  DATA.glob("*_profile.tsv")
+
+    print(metaphlan_profile)
+    metaphlan_profile_read = pd.read_csv(metaphlan_profile)
+    print(metaphlan_profile_read)
 # main
 if __name__ == "__main__": 
     #ex1()
     #ex2()
-    ex3()
+    #ex3()
+    ex4()
