@@ -36,6 +36,8 @@ def ex3():
     report_all = Path("data").glob("*.report")
     print(list(report_all))
 
+def ex4()
+    print("GITHUB")
 # main
 if __name__ == "__main__": 
     #ex1()
