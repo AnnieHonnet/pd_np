@@ -4,6 +4,7 @@ import os
 import sys
 import time
 from pathlib import Path
+import re
 
 
 
@@ -38,16 +39,48 @@ def ex3():
     assert len(report) == 6 
     
     
+#TABLE_METAPHLAN
+COL = ["cladenames", "ncbi_taxid",  "relative_abund",  
+       "coverage" , "n_reads"]
 
-def ex4():
-    metaphlan_profile =  DATA.glob("*_profile.tsv")
+def table_metaphlan():
+    frames = []
+    for f in sorted(DATA.glob("*_metaphlan.txt")): 
+        df = pd.read_csv(f, sep="\t", names=COL, skiprows=7)
+        df["samples"] = f.stem.replace("_metaphlan", "")
+        frames.append(df)
+    df_all = pd.concat(frames, ignore_index=True,)
+    #print(df_all)
+    is_species = (df_all["cladenames"].str.contains(r"\|s__")) 
+    
+    species_table = df_all[is_species].copy()
+   
 
-    print(metaphlan_profile)
-    metaphlan_profile_read = pd.read_csv(metaphlan_profile)
-    print(metaphlan_profile_read)
+    
+    species_table["species"] = species_table["cladenames"].str.extract(r"(s__[^|]+)")
+    species_table_3 = species_table[[ 'n_reads', 'samples', 'species']] 
+    species_table_3.to_csv(DATA.parent / "species_table_3.tsv", sep="\t", index=False)
+    
+    
+ 
+def air():
+    COL = ["city","country" ,"date.utc","location","parameter","value","unit"]
+
+    df_air = pd.read_csv(DATA / "air_qual.csv", sep=",", names=COL)
+    no2 = df_air[df_air["parameter"] == "no2"]
+    no2_subset = no2.sort_index().groupby(["location"]).all()
+
+
+    no2.to_csv("no2.csv")
+    
+    print(no2_subset)
+   
+
+
 # main
 if __name__ == "__main__": 
     #ex1()
     #ex2()
     #ex3()
-    ex4()
+    #table_metaphlan()
+    air()
