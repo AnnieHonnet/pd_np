@@ -166,6 +166,8 @@ def combine_line():
 
     sum_Cdiff_df.to_csv("C.diff_3toxin_summ.tsv")
 
+def ex05(): 
+    
 
 def main(): 
     #ex1()
@@ -176,7 +178,7 @@ def main():
     #k2_report_tab()
     #table_k2  = load_table(k2_tab)
     #table_mpa = load_table(metaphlan_tab)
-    combine_line()
+    #combine_line()
 
 # main
 if __name__ == "__main__": 

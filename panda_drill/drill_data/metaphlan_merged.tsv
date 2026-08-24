@@ -1,0 +1,5 @@
+clade_name	Mouse1_Day1	Mouse1_Day2	Mouse1_Day3	Mouse1_Day4	Mouse1_Day5	Mouse1_Day6	Mouse2_Day1	Mouse2_Day2	Mouse2_Day3	Mouse2_Day4	Mouse2_Day5	Mouse2_Day6	Mouse3_Day1	Mouse3_Day2	Mouse3_Day3	Mouse3_Day4	Mouse3_Day5	Mouse3_Day6
+k__Bacteria|p__Bacillota|g__Clostridioides|s__Clostridioides_difficile	0.100	0.200	0.300	0.400	0.500	0.600	0.100	0.200	45.000	0.400	0.500	0.600	0.100	0.200	0.300	45.000	0.500	0.600
+k__Bacteria|p__Bacillota|g__Clostridium|s__Clostridium_butyricum	21.000	22.000	23.000	24.000	25.000	26.000	21.000	22.000	23.000	24.000	25.000	26.000	21.000	22.000	23.000	24.000	25.000	26.000
+k__Bacteria|p__Pseudomonadota|g__Escherichia|s__Escherichia_coli	5.500	5.500	5.500	5.500	5.500	5.500	6.000	6.000	6.000	6.000	6.000	6.000	6.500	6.500	6.500	6.500	6.500	6.500
+k__Bacteria|p__Bacteroidota|g__Bacteroides|s__Bacteroides_fragilis	9.800	9.600	9.400	9.200	9.000	8.800	9.800	9.600	9.400	9.200	9.000	8.800	9.800	9.600	9.400	9.200	9.000	8.800
