@@ -17,7 +17,7 @@ import seaborn as sns
 
 DATA = Path("/home/anh/Desktop/pandas_bioinfo_training/data")
 
-K2_REPORT_PATH = Path("/Users/nfs/annie/projects/yousra/fastq_mouse/merge1")
+K2_REPORT_PATH = Path("/Users/nfs/annie/projects/yousra/fastq_mouse/filter_mapping2")
 Metaphaln_table = Path("")
 REPORT_COLS = ["pct", "clade_reads", "direct_reads", "rank", "taxid", "name"]
 
@@ -100,20 +100,20 @@ def k2_report_tab():
         Species_specific = df["rank_code"].str.contains("S")
         dfs_all.append(df[Species_specific])
     k2_report_all = pd.concat(dfs_all, ignore_index=True)
-    #k2_report = pd.concat(dfs, ignore_index=True)
+    k2_report = pd.concat(dfs, ignore_index=True)
     #print(k2_report)
     #return k2_report
     
     table_all = k2_report_all.pivot_table(index="scientific_name", columns="sample", values="taxon_reads", fill_value=0)
-    #table = k2_report.pivot_table(index="scientific_name", columns="sample", values="taxon_reads", fill_value=0) 
+    table = k2_report.pivot_table(index="scientific_name", columns="sample", values="taxon_reads", fill_value=0) 
     
-    #table = table.reindex(columns=all_samples, fill_value=0) #force to have all samples inside table even if there are no C.diff or C.but inside
+    table = table.reindex(columns=all_samples, fill_value=0) #force to have all samples inside table even if there are no C.diff or C.but inside
 
 
     #print(table)
     #table.plot()
-    #table.to_csv("k2_report_table.tsv",sep="\t")
-    table_all.to_csv("k2_report_table_all.tsv",sep="\t")
+    table.to_csv("k2_report_table_clean.tsv",sep="\t")
+    table_all.to_csv("k2_report_table_all_clean.tsv",sep="\t")
  
 metaphlan_tab= Path("/Users/nfs/annie/projects/yousra/fastq_mouse/metaphlan3/metaphlan_clostridium.csv")
 k2_tab = Path("/Users/nfs/annie/projects/yousra/fastq_mouse/metaphlan3/k2_repor_table.csv")
@@ -151,6 +151,21 @@ plt.tight_layout()
 plt.savefig(plot_out / "k2_vs_mpa_lines.png", dpi=200)
 plt.close()
 
+Cdiff_3toxin = Path("/Users/nfs/annie/projects/yousra/fastq_mouse/metaphlan3/Mice_vs_Cdiff3toxin.csv")
+Cbut_4_plasmid_4gene = Path("/Users/nfs/annie/projects/yousra/fastq_mouse/metaphlan3/Cbut_megaplasmid_4gene.csv") 
+def combine_line():
+    Cdiff_3toxin_COL = ["samples" ,"#rname" , "startpos" , "endpos"  ,"numreads" , "covbases",  "coverage",  "meandepth" ,  "meanbaseq",  "meanmapq"]
+    Cdiff_3toxin_df = pd.read_csv(Cdiff_3toxin , sep = "\t", names=Cdiff_3toxin_COL, skiprows=1)
+    Cbut_4gene = pd.read_csv(Cbut_4_plasmid_4gene , sep = "\t", names=Cdiff_3toxin_COL,  skiprows=1)
+    sum_Cdiff_df = Cdiff_3toxin_df.groupby("samples", as_index=False, )["numreads"].sum()
+    summ_Cbut_4gene = Cbut_4gene.groupby("samples", as_index=False, )["numreads"].sum()
+
+
+    print(summ_Cbut_4gene)
+    summ_Cbut_4gene.to_csv("Cbut_4gene_sum.tsv")
+
+    sum_Cdiff_df.to_csv("C.diff_3toxin_summ.tsv")
+
 
 def main(): 
     #ex1()
@@ -158,9 +173,10 @@ def main():
     #ex3()
     #table_metaphlan()
     #air()
-    k2_report_tab()
-    table_k2  = load_table(k2_tab)
-    table_mpa = load_table(metaphlan_tab)
+    #k2_report_tab()
+    #table_k2  = load_table(k2_tab)
+    #table_mpa = load_table(metaphlan_tab)
+    combine_line()
 
 # main
 if __name__ == "__main__": 
