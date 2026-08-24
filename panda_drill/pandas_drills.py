@@ -135,9 +135,9 @@ def ex(d):
           hint="list(df.columns)")
 def ex(d):
     # ---- your code here -------------------------------------------------
-    result = None
+    result = list(d.cov.columns)
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    #raise NotImplementedError  # delete this line once you have written your answer
     assert isinstance(result, list), "expected a list, not an Index"
     assert result[0] == "sample" and result[-1] == "day"
     assert len(result) == 12
@@ -151,9 +151,10 @@ S = "3. Row access: iloc, loc, boolean masks"
           hint=".iloc[] takes integer positions")
 def ex(d):
     # ---- your code here -------------------------------------------------
-    result = None
+    result = d.cov.iloc[:5]
+    print(result)
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    #raise NotImplementedError  # delete this line once you have written your answer
     assert result.shape == (5, 12), f"expected (5, 12), got {result.shape}"
     assert result.iloc[0]["sample"] == "Mouse1_Day1"
 
@@ -165,7 +166,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    #raise NotImplementedError  # delete this line once you have written your answer
     assert result.shape == (5, 2), f"expected (5, 2), got {result.shape}"
     assert list(result.columns) == ["sample", "meandepth"]
 
