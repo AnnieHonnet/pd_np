@@ -152,7 +152,6 @@ S = "3. Row access: iloc, loc, boolean masks"
 def ex(d):
     # ---- your code here -------------------------------------------------
     result = d.cov.iloc[:5]
-    print(result)
     # ----------------------------------------------------------------------
     #raise NotImplementedError  # delete this line once you have written your answer
     assert result.shape == (5, 12), f"expected (5, 12), got {result.shape}"
@@ -164,7 +163,7 @@ def ex(d):
                "positions, or mix with .loc")
 def ex(d):
     # ---- your code here -------------------------------------------------
-    result = None
+    result = d.cov.iloc[9:14, [0,7]]
     # ----------------------------------------------------------------------
     #raise NotImplementedError  # delete this line once you have written your answer
     assert result.shape == (5, 2), f"expected (5, 2), got {result.shape}"
@@ -175,7 +174,8 @@ def ex(d):
           hint="df.loc[boolean_mask]")
 def ex(d):
     # ---- your code here -------------------------------------------------
-    result = None
+    result = d.cov.loc[d.cov["meandepth"] > 40 ]
+    print(result)
     # ----------------------------------------------------------------------
     raise NotImplementedError  # delete this line once you have written your answer
     assert (result["meandepth"] > 40).all(), "some rows slipped through"
