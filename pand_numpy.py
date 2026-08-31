@@ -151,8 +151,8 @@ plt.tight_layout()
 plt.savefig(plot_out / "k2_vs_mpa_lines.png", dpi=200)
 plt.close()
 
-Cdiff_3toxin = Path("/Users/nfs/annie/projects/yousra/fastq_mouse/metaphlan3/Mice_vs_Cdiff3toxin.csv")
-Cbut_4_plasmid_4gene = Path("/Users/nfs/annie/projects/yousra/fastq_mouse/metaphlan3/Cbut_megaplasmid_4gene.csv") 
+Cdiff_3toxin = Path("/Users/nfs/annie/projects/yousra/fastq_mouse/filter_mapping2/cdiff_F3852_q30_50pcent_COV.tsv")
+Cbut_4_plasmid_4gene = Path("/Users/nfs/annie/projects/yousra/fastq_mouse/filter_mapping2/cbuty_F3852_q30_50pcent_COV.tsv") 
 def combine_line():
     Cdiff_3toxin_COL = ["samples" ,"#rname" , "startpos" , "endpos"  ,"numreads" , "covbases",  "coverage",  "meandepth" ,  "meanbaseq",  "meanmapq"]
     Cdiff_3toxin_df = pd.read_csv(Cdiff_3toxin , sep = "\t", names=Cdiff_3toxin_COL, skiprows=1)
@@ -161,12 +161,12 @@ def combine_line():
     summ_Cbut_4gene = Cbut_4gene.groupby("samples", as_index=False, )["numreads"].sum()
 
 
-    print(summ_Cbut_4gene)
-    summ_Cbut_4gene.to_csv("Cbut_4gene_sum.tsv")
+    #print(summ_Cbut_4gene)
+    summ_Cbut_4gene.to_csv("cbuty_F3852_q30_50pcent_COV_sum.tsv")
 
-    sum_Cdiff_df.to_csv("C.diff_3toxin_summ.tsv")
+    sum_Cdiff_df.to_csv("cdiff_F3852_q30_50pcent_COV_sum.tsv")
 
-def ex05(): 
+
     
 
 def main(): 
@@ -178,7 +178,7 @@ def main():
     #k2_report_tab()
     #table_k2  = load_table(k2_tab)
     #table_mpa = load_table(metaphlan_tab)
-    #combine_line()
+    combine_line()
 
 # main
 if __name__ == "__main__": 

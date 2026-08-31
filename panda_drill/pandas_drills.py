@@ -152,6 +152,7 @@ S = "3. Row access: iloc, loc, boolean masks"
 def ex(d):
     # ---- your code here -------------------------------------------------
     result = d.cov.iloc[:5]
+    
     # ----------------------------------------------------------------------
     #raise NotImplementedError  # delete this line once you have written your answer
     assert result.shape == (5, 12), f"expected (5, 12), got {result.shape}"
@@ -163,9 +164,10 @@ def ex(d):
                "positions, or mix with .loc")
 def ex(d):
     # ---- your code here -------------------------------------------------
-    result = d.cov.iloc[9:14, [0,7]]
+    result = d.cov.iloc[10:15][["sample", "meandepth"]]
+    
     # ----------------------------------------------------------------------
-    #raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert result.shape == (5, 2), f"expected (5, 2), got {result.shape}"
     assert list(result.columns) == ["sample", "meandepth"]
 
@@ -174,10 +176,10 @@ def ex(d):
           hint="df.loc[boolean_mask]")
 def ex(d):
     # ---- your code here -------------------------------------------------
-    result = d.cov.loc[d.cov["meandepth"] > 40 ]
-    print(result)
+    result = d.cov.loc[d.cov["meandepth"] > 40]
+    
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    #raise NotImplementedError  # delete this line once you have written your answer
     assert (result["meandepth"] > 40).all(), "some rows slipped through"
     assert len(result) == 12, f"expected 12 rows, got {len(result)}"
 
@@ -186,12 +188,13 @@ def ex(d):
           hint="combine with & and wrap EACH condition in parentheses")
 def ex(d):
     """
-    Rows where rname == 'Cdiff_CDSM_1' AND coverage > 98.
+    Rows where rname == 'Cdiff_CDSM_1' AND coveraage > 98.
     """
     # ---- your code here -------------------------------------------------
-    result = None
+    result = d.cov.loc[(d.cov["rname"] == "Cdiff_CDSM_1") & (d.cov["coverage"] > 98)]
+    #print(d.cov)
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    #raise NotImplementedError  # delete this line once you have written your answer
     assert (result["rname"] == "Cdiff_CDSM_1").all()
     assert (result["coverage"] > 98).all()
     assert len(result) == 11, f"expected 11 rows, got {len(result)}"
@@ -204,9 +207,10 @@ def ex(d):
     Rows belonging to Mouse1_Day1, Mouse2_Day3 or Mouse3_Day4.
     """
     # ---- your code here -------------------------------------------------
-    result = None
+    result = d.cov.loc[d.cov["sample"].isin(["Mouse1_Day1", "Mouse2_Day3", "Mouse3_Day4"])]
+    #print(result)
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    #raise NotImplementedError  # delete this line once you have written your answer
     assert len(result) == 6, f"3 samples x 2 contigs = 6 rows, got {len(result)}"
     assert set(result["sample"]) == {"Mouse1_Day1", "Mouse2_Day3", "Mouse3_Day4"}
 
@@ -218,9 +222,10 @@ def ex(d):
     Rows where mouse == 2 and day > 3, written with .query().
     """
     # ---- your code here -------------------------------------------------
-    result = None
+    result = d.cov.query("mouse == 2 and day > 3")
+    
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    #raise NotImplementedError  # delete this line once you have written your answer
     assert len(result) == 6, f"expected 6 rows, got {len(result)}"
     assert set(result["day"]) == {4, 5, 6}
 
@@ -229,9 +234,10 @@ def ex(d):
           hint="~ negates a boolean mask; != also works")
 def ex(d):
     # ---- your code here -------------------------------------------------
-    result = None
+    result = d.cov.loc[d.cov["rname" != "Cdiff_CDSM_2"]]
+    print(result)
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert len(result) == 18, f"expected 18 rows, got {len(result)}"
     assert "Cdiff_CDSM_2" not in set(result["rname"])
 
@@ -245,7 +251,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert np.isscalar(result) or isinstance(result, (int, np.integer)), \
         "expected a scalar value"
     assert result == 13, f"expected 13, got {result}"
@@ -265,7 +271,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert "reads_per_kb" in result.columns
     assert result.shape[1] == 13
     assert abs(result.at[0, "reads_per_kb"] - 2.6491) < 0.01, \
@@ -283,7 +289,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     counts = result["rname"].value_counts().to_dict()
     assert counts == {"chromosome": 18, "plasmid": 18}, \
         f"expected 18 of each, got {counts}"
@@ -299,7 +305,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert "low_depth" in result.columns, "column was never created"
     assert result["low_depth"].sum() == 4, \
         f"expected 4 True values, got {result['low_depth'].sum()}"
@@ -316,7 +322,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert "depth_class" in result.columns
     assert result["depth_class"].isna().sum() == 0, \
         "some values fell outside your bins"
@@ -334,7 +340,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     plasmid = result.loc[result["rname"] == "Cdiff_CDSM_2", "meanmapq"]
     chrom = result.loc[result["rname"] == "Cdiff_CDSM_1", "meanmapq"]
     assert (plasmid == 0).all(), "plasmid rows were not all set to 0"
@@ -351,7 +357,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert list(result.columns)[0] == "run", \
         f"'run' is not first: {list(result.columns)[:3]}"
     assert (result["run"] == "HCWJHDRX7").all()
@@ -368,7 +374,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert len(result) == 38, f"expected 38 rows, got {len(result)}"
     assert list(result.columns) == list(d.cov.columns), \
         "column set or order changed -- check for typos in your new frame"
@@ -388,7 +394,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert "contig" in result.columns and "n_reads" in result.columns
     assert "rname" not in result.columns and "numreads" not in result.columns
     assert result.shape == (36, 12), "renaming should not change the shape"
@@ -403,7 +409,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert result.shape[1] == 9, f"expected 9 columns, got {result.shape[1]}"
     for gone in ("meanbaseq", "meanmapq", "covbases"):
         assert gone not in result.columns
@@ -419,7 +425,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert list(result.columns) == \
         ["sample", "mouse", "day", "rname", "meandepth", "coverage"], \
         f"got {list(result.columns)}"
@@ -434,7 +440,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert len(result) == 34, f"expected 34 rows, got {len(result)}"
     assert 0 not in result.index and 1 not in result.index
 
@@ -454,7 +460,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert result["mouse"].dtype.kind == "i", "'mouse' is not an integer column"
     assert result["day"].dtype.kind == "i", "'day' is not an integer column"
     assert result["mouse"].isna().sum() == 0, \
@@ -472,7 +478,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert len(result) == 6, f"3 mice x 2 contigs = 6, got {len(result)}"
     assert (result["day"] == 3).all()
 
@@ -487,7 +493,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert "species" in result.columns
     assert result.at[0, "species"] == "Clostridioides_difficile", \
         f"got {result.at[0, 'species']!r}"
@@ -503,7 +509,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert result.at[0, "label"] == "M1D1", f"got {result.at[0, 'label']!r}"
     assert result["label"].nunique() == 18
 
@@ -522,7 +528,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert np.isscalar(result) or isinstance(result, (int, np.integer)), \
         f"expected a single number, got {type(result)}"
     assert result == 23, f"expected 23, got {result}"
@@ -538,7 +544,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert "sample" in result.columns, "'sample' did not come back as a column"
     assert list(result.index) == list(range(36))
     assert list(result.columns)[0] == "sample"
@@ -553,7 +559,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert result.iloc[0]["mouse"] == 1
     first_mouse = result.loc[result["mouse"] == 1, "meandepth"].tolist()
     assert first_mouse == sorted(first_mouse, reverse=True), \
@@ -571,7 +577,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert isinstance(result, pd.Series), "expected a Series"
     assert result["coverage"] == 2, f"coverage should have 2 NaN, got {result['coverage']}"
     assert result["meandepth"] == 0
@@ -583,7 +589,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert len(result) == 34, f"expected 34 rows, got {len(result)}"
     assert result["coverage"].isna().sum() == 0
 
@@ -598,7 +604,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert result["coverage"].isna().sum() == 0, "still some NaN left"
     filled = result.at[3, "coverage"]          # was NaN, plasmid row
     plasmid_mean = d.cov.loc[d.cov["rname"] == "Cdiff_CDSM_2", "coverage"].mean()
@@ -616,7 +622,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert isinstance(result, pd.Series), "expected a Series"
     assert result.loc[1] == 20.25, f"mouse 1 should be 20.25, got {result.loc[1]}"
     assert result.loc[3] == 50.25
@@ -628,7 +634,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert len(result) == 18, f"expected 18 groups, got {len(result)}"
     assert result.loc[(1, 1)] == 11550, \
         f"Mouse1 Day1 should total 11550, got {result.loc[(1, 1)]}"
@@ -647,7 +653,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert list(result.columns) == \
         ["mean_depth", "max_depth", "total_reads", "n"], \
         f"got {list(result.columns)}"
@@ -665,7 +671,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert len(result) == 36, "transform should not collapse rows -- did you use agg?"
     assert result.loc[result["mouse"] == 1, "mouse_mean_depth"].eq(20.25).all()
 
@@ -679,7 +685,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert set(result["mouse"]) == {2, 3}, f"got mice {sorted(set(result['mouse']))}"
     assert len(result) == 24
 
@@ -693,7 +699,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert result.loc["Cdiff_CDSM_1"] == 18
     assert result.loc["Cdiff_CDSM_2"] == 18
 
@@ -712,7 +718,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert "sample" in result.columns, "'sample' must be a column"
     assert result.shape[0] == 17, \
         f"17 samples were classified, got {result.shape[0]}"
@@ -730,7 +736,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert len(result) == 18, \
         f"expected 18 rows -- more means duplicate keys, got {len(result)}"
     assert result["reads"].isna().sum() == 1, \
@@ -749,7 +755,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert len(result) == 17, f"expected 17 rows, got {len(result)}"
     assert result["reads"].isna().sum() == 0
     assert "Mouse3_Day5" not in set(result["sample"])
@@ -769,7 +775,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert len(result) == 18
     assert result["cage"].isna().sum() == 0, "some rows failed to match"
     assert set(result.loc[result["mouse"] == 2, "cage"]) == {"B"}
@@ -786,7 +792,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert result == 72, \
         f"18 samples x 2 x 2 = 72 rows; got {result}. This is why you always " \
         "check .shape after a merge."
@@ -806,7 +812,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert list(result.columns) == ["clade_name", "sample", "abundance"], \
         f"got {list(result.columns)}"
     assert len(result) == 72, f"4 x 18 = 72 rows, got {len(result)}"
@@ -823,7 +829,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert result.shape == (18, 4), f"expected (18, 4), got {result.shape}"
     assert result.index.name == "sample"
 
@@ -838,7 +844,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert result.shape == (3, 2), f"expected (3, 2), got {result.shape}"
     assert result.loc[1, "Cdiff_CDSM_1"] == 81000, \
         f"got {result.loc[1, 'Cdiff_CDSM_1']}"
@@ -857,7 +863,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert result["phase"].isna().sum() == 0, "some days were not mapped"
     counts = result["phase"].value_counts().to_dict()
     assert counts == {"pre": 12, "peak": 12, "post": 12}, f"got {counts}"
@@ -874,7 +880,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert "depth_log10" in result.columns
     assert abs(result.at[0, "depth_log10"] - np.log10(11)) < 1e-9
 
@@ -889,7 +895,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert result.at[0, "tag"] == "Mouse1_Day1:Cdiff_CDSM_1", \
         f"got {result.at[0, 'tag']!r}"
     assert result["tag"].nunique() == 36
@@ -905,7 +911,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     counts = pd.Series(result["molecule"]).value_counts().to_dict()
     assert counts == {"plasmid": 18, "chromosome": 18}, f"got {counts}"
 
@@ -925,7 +931,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert len(result) == 18, f"expected 18 rows, got {len(result)}"
     assert set(result.columns) == {"sample", "reads", "abundance"}
     assert result["reads"].isna().sum() == 1
@@ -944,7 +950,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert list(result.columns) == ["sample", "reads_per_abundance"]
     assert len(result) == 3
     vals = result["reads_per_abundance"].tolist()
@@ -963,7 +969,7 @@ def ex(d):
     # ---- your code here -------------------------------------------------
     result = None
     # ----------------------------------------------------------------------
-    raise NotImplementedError  # delete this line once you have written your answer
+    return "__TODO__"  # delete this line once you have written your answer
     assert list(result.columns) == \
         ["sample", "mouse", "day", "numreads", "meandepth", "coverage"], \
         f"unexpected columns {list(result.columns)} -- did index=False get used?"
